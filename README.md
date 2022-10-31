@@ -1,5 +1,7 @@
 # Analisys Data Project - Forum Repraesentativas Exchange Rate Praedictio
 
+==============================================================================
+
 ## Este proyecto busca poder abordar una problemática de análisis de datos con condiciones reales, tal como ocurriría en cualquier empresa o entidad.
 
 Elija alguno de los datasets que se encuentran en las páginas de datos abiertos de USA (https://data.gov/) o Colombia (https://www.datos.gov.co/). Asuma que usted fue contratado por dicha empresa o entidad para realizar un proyecto de analítica que resuelva alguna problemática que pueda ser abordada con el dataset elegido. La problemática debe ser relacionada con la temática de modelamiento de series de tiempo.
@@ -13,11 +15,14 @@ Los entregables del proyecto serían los siguientes:
 
 2.	Se deben entregar también los notebooks utilizados para todo el desarrollo del proyecto, incluyendo los códigos ejecutados y las salidas de cada uno. Se recomienda entregar al menos 4 notebooks: uno para todo el análisis exploratorio y la preparación de datos, otro para el modelamiento, otro para la evaluación de resultados del modelo escogido y un último para el uso del modelo en producción (este último debe permitir generar nuevas predicciones a futuro bajo demanda del usuario, teniendo en cuenta que es posible que este usuario le suministre una versión actualizada a la fecha de los datos).
 
+==============================================================================
+
 ## Introducción
 
 La Tasa de Cambio Representativa del Mercado (TCRM), corresponde al promedio ponderado de las operaciones de compra y venta de contado de dólares de los Estados Unidos de América a cambio de moneda legal colombiana.
 Este documento modela los tipos de cambio anuales entre USD/CO, y compara los datos reales con pronósticos desarrollados utilizando análisis de series de tiempo durante el período de 1992 a 2022. Los datos semanales oficiales del Banco Nacional de la República de Colombia se utilizan para el presente estudio. El objetivo principal de este documento es aplicar el modelo ARIMA para la previsión de tipos de cambio semanales de USD/CO. La precisión del pronóstico se compara con el error absoluto medio (MAE) y el error cuadrático medio (MSE).
 
+------------------------------------------------------------------------------------------------
 1.	Entendimiento de negocio
 
 Esta etapa se refiere a la predicción del precio de dólar. En esta etapa se necesita una comprensión de los antecedentes y objetivos de los procesos relacionados con la bolsa de valores, incluyendo:
@@ -53,5 +58,34 @@ e)	Riesgos
 
 •	Para poder modelar se necesita también ajustar el periodo de las fechas, ya que como los datos son entregados de lunes a viernes, y el modelo no responde a este orden, porque se necesita una secuencia uniforme. Por lo tanto, se reorganiza de manera semanal para que puedan ser modelados.
 
+
+3.	Preparación de datos
+
+•   La etapa de preparación de datos es la preparación del conjunto de datos, los datos utilizados para el modelado. En esta etapa se selección y construyen los datos, se elige la tabla relacionada para simplificar el proceso de selección de datos. Esta tabla contiene el valor del peso colombiano frente al dólar estadounidense con su respectiva fecha de registro. Contiene 7431 datos con variaciones, se re-muestrean para que queden con una frecuencia semanal.
+
+•   El uso de datos diarios para su serie temporal contiene demasiada variación (lunes a viernes), por lo que primero debe volver a muestrear los datos de la serie temporal por semana. Luego use esta serie de tiempo remuestreada para predecir los tipos de cambio del peso colombiano frente al dólar estadounidense:
+
+4.	Modelado de datos
+
+•  Para este proyecto, el primer modelo que construimos fue el modelo ARIMA (Promedio móvil integrado autorregresivo). La técnica ARIMA es un modelo estadístico que se utiliza para pronosticar el conjunto de datos que tiene una naturaleza de serie temporal. El modelo ARIMA no es más que una composición de tres modelos, a saber, autorregresión (AR), integración (I) y media móvil (MA).
+
+•  Recordemos que los hiperparámetros de un modelo ARIMA son (p,d,q), donde p es para la parte "AR" (cuántos rezagos incluir), d es para la parte "I" (cuántas veces integrar o diferenciar la serie) y la q es para la parte "MA" (cuántos medias móviles del error se incluirán).
+
+•  Observando detenidamente la gráfica, vemos que los datos de tipos de cambio de divisas entre USA y colombia no son estacionarios y esto es cierto para cualquier tipo de cambio de moneda. Para hacerlo estacionario se tuvo que diferenciar la serie, en el modelo ARIMA para apli•  car este cambio la "d" será igual a 1. Nos falta determinar entonces valores para la p y la q.
+
+<p align="center">
+  <img src="resources\ARIMA.png" width="600" title="hover text">
+</p>
+
+•  Podemos observar que el modelo que más exacto dio, fue el ARIMA, por lo tanto seguiremos con este, sin embargo, sus resultados fueron muy parecidos, procedemos a realizar la predicción de los datos futuros.
+
+----------------------------------------------------------------------------------------------------------------------
+
+<p align="center">
+  <img src="resources\ARIMA_PRAEDICTIO.png" width="600" title="hover text">
+</p>
+
 Conclusión
-•	La técnica ARIMA para pronosticar los tipos de cambio de divisas del peso colombiano frente al dólar estadounidense (USD), se aplicó durante el período de 1992 a 2022. Se utilizó el software Python para la predicción. de los tipos de cambio. Se presentó la técnica ARIMA y se identificaron tres pasos principales para construir el modelo, a saber, Identificación, Estimación y Verificación del modelo. Además, se estimó el modelo de pronóstico y se comparó con los datos reales de la moneda. La eficacia de los resultados del modelo de pronóstico se comparó con el error absoluto medio (MAE) y el error cuadrático medio (MSE).
+•   En este proyecto la técnica ARIMA fue la que se usó para la modelación, fue mejor esta que la técnica SARIMA, en todos los casos no será así, por eso se deben probar diferentes técnicas para el modelado de los datos.
+
+•   La técnica ARIMA para pronosticar los tipos de cambio de divisas del peso colombiano frente al dólar estadounidense (USD), se aplicó durante el período de 1992 a 2022. Se utilizó el software Python para la predicción. de los tipos de cambio. Se presentó la técnica ARIMA y se identificaron tres pasos principales para construir el modelo, a saber, Identificación, Estimación y Verificación del modelo. Además, se estimó el modelo de pronóstico y se comparó con los datos reales de la moneda. La eficacia de los resultados del modelo de pronóstico se comparó con el error absoluto medio (MAE) y el error cuadrático medio (MSE).
