@@ -81,6 +81,48 @@ e)	Riesgos
 
 ----------------------------------------------------------------------------------------------------------------------
 
+
+Comentarios finales:
+
+• Como podemos observar los valores que se 
+predicen a futuro son muy parecidos, esta serie es muy 
+difícil de modelar, los datos presentan una tendencia 
+creciente, además varían mucho, el precio del peso 
+colombiano con respecto al dólar depende de muchos 
+factores externos que pueden cambiar día a día.
+
+• Si se logrará predecir con exactitud el precio del 
+peso colombiano frente al dólar estadounidense, habría 
+muchas personas ricas, sin embargo, aunque no se da 
+con exactitud, si tenemos un valor estimado cercano al 
+real, por lo tanto, se puede recurrir a este modelo para 
+saber qué decisión tomar a la hora de hacer un negocio, 
+inversión, compra o venta de dólares.
+
+
+Nuestro objetivo es poder predecir el tipo de cambio para el día siguiente. Para esto tomamos en 
+consideración pasados tres días, para ambos modelos, lo que nos da un MSE no tan alto para COP. 
+Obtenemos esta alta precisión por dos razones:
+
+• En primer lugar, en el mundo real, las fluctuaciones de las tasas entre las tasas en días 
+consecutivos no son demasiado considerables. A menudo, las diferencias de tasas son 
+significativas durante un período de tiempo. Entonces, al predecir la tasa futura, el modelo 
+debe considerar la tendencia pasada, analiza si la tasa es de tendencia creciente o 
+tendencia decreciente. Calcula el posible cambio que puede ocurrir en el día siguiente y en 
+consecuencia dar la predicción. Esta es la razón por la cual los datos del último día no 
+funcionan, porque se vuelve difícil para el modelo analizar la tendencia entre las tasas y 
+pronosticar el valor apropiado. Usando los últimos días los datos ayudan al modelo a 
+analizar la tendencia de los datos, el modelo predecirá adecuadamente los datos de los 
+próximos días mediante el análisis de la tendencia.
+
+• En segundo lugar, datos no depende en gran medida de los datos históricos, ya que el tipo 
+de cambio de hace una década no tiene un impacto significativo en el tipo de cambio de 
+este día. Por lo tanto, confiamos principalmente en los datos de los últimos días para 
+identificar la tendencia y predecir los valores.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
 <p align="center">
   <img src="resources\ARIMA_PRAEDICTIO.png" width="600" title="hover text">
 </p>
