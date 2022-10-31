@@ -1,6 +1,7 @@
 # Analisys Data Project - Forum Repraesentativas Exchange Rate Praedictio
 
-==========================================================
+------------------------------------------------------------------------------------------------
+
 
 ## Este proyecto busca poder abordar una problemática de análisis de datos con condiciones reales, tal como ocurriría en cualquier empresa o entidad.
 
@@ -15,7 +16,8 @@ Los entregables del proyecto serían los siguientes:
 
 2.	Se deben entregar también los notebooks utilizados para todo el desarrollo del proyecto, incluyendo los códigos ejecutados y las salidas de cada uno. Se recomienda entregar al menos 4 notebooks: uno para todo el análisis exploratorio y la preparación de datos, otro para el modelamiento, otro para la evaluación de resultados del modelo escogido y un último para el uso del modelo en producción (este último debe permitir generar nuevas predicciones a futuro bajo demanda del usuario, teniendo en cuenta que es posible que este usuario le suministre una versión actualizada a la fecha de los datos).
 
-===========================================================
+------------------------------------------------------------------------------------------------
+
 
 ## Introducción
 
